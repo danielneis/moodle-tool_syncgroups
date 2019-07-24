@@ -10,9 +10,9 @@ Install
 -------
 
 * Put these files at moodle/admin/tool/syncgroups/
- * You may use "composer require moodle-ufsc/tool_syncgroups"
- * or git "clone https://github.com/UFSC/moodle-tool_syncgroups.git"
- * or download the latest version from https://github.com/UFSC/moodle-tool_syncgroups/repository/archive.zip
+ * You may use "composer require danielneis/tool_syncgroups"
+ * or git "clone https://github.com/danielneis/moodle-tool_syncgroups.git"
+ * or download the latest version from https://github.com/danielneis/moodle-tool_syncgroups/repository/archive.zip
 * Log in your Moodle as Admin and go to "Notifications" page
 * Follow the instructions to install the plugin
 
