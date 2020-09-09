@@ -23,9 +23,14 @@
  */
 
 require('../../../config.php');
-require("{$CFG->dirroot}/group/lib.php");
+require_once("{$CFG->dirroot}/group/lib.php");
+
+require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
+require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
+require_once($CFG->dirroot . '/backup/util/ui/renderer.php');
+require_once($CFG->dirroot . '/backup/util/ui/import_extensions.php');
+
 require("{$CFG->dirroot}/admin/tool/syncgroups/lib.php");
-require("{$CFG->dirroot}/admin/tool/syncgroups/ui/renderer.php");
 require("{$CFG->dirroot}/admin/tool/syncgroups/ui/components.php");
 
 $courseid = required_param('courseid', PARAM_INT);

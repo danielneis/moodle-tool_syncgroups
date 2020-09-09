@@ -15,11 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-require($CFG->dirroot . '/backup/util/includes/backup_includes.php');
-require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
-require($CFG->dirroot . '/backup/util/ui/renderer.php');
-require($CFG->dirroot . '/backup/util/ui/import_extensions.php');
-
 class tool_syncgroups_renderer extends core_backup_renderer {
 
     /**
@@ -89,29 +84,16 @@ class tool_syncgroups_renderer extends core_backup_renderer {
 
         $html .= html_writer::start_tag('div', array('class' => 'ics-existing-group backup-section'));
         $html .= $this->output->heading(get_string('selectgroups', 'tool_syncgroups'), 2, array('class' => 'header'));
-        if ($groups = groups_get_all_groups($courseid, 0, 0, 'g.id, g.name')) {
-
-            $html .= html_writer::start_tag('ul');
-            foreach ($groups as $group) {
-                $html .= html_writer::start_tag('li').
-                         html_writer::checkbox('groups[]', $group->id, false, $group->name).
-                         html_writer::end_tag('li');
-            }
-            $html .= html_writer::end_tag('ul');
-        } else {
-            $html .= html_writer::tag('p', get_string('nogroups', 'tool_syncgroups'));
-        }
+        $html .= $this->output->render(new tool_syncgroups\output\groups_list($courseid));
         $html .= html_writer::end_tag('div');
 
         // We only allow import adding for now. Enforce it here.
         $html .= html_writer::start_tag('div', array('class' => 'ics-existing-course backup-section'));
         $html .= $this->output->heading(get_string('syncgroupsto', 'tool_syncgroups'), 2, array('class' => 'header'));
         $html .= $this->backup_detail_pair(get_string('selectacourse', 'backup'), $this->render($courses));
-        if ($groups) {
-            $html .= $this->backup_detail_pair('', html_writer::empty_tag('input', array('type' => 'submit', 'value' => get_string('continue'))));
-        } else {
-            $html .= $this->backup_detail_pair('', html_writer::empty_tag('input', array('type'=>'submit', 'value'=>get_string('continue'), 'disabled' => 'disabled')));
-        }
+
+        $html .= $this->backup_detail_pair('', html_writer::empty_tag('input', array('type' => 'submit', 'value' => get_string('continue'))));
+
         $html .= html_writer::end_tag('div');
         $html .= html_writer::end_tag('form');
         $html .= html_writer::end_tag('div');
