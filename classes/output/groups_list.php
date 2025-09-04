@@ -18,9 +18,12 @@ namespace tool_syncgroups\output;
 
 class groups_list implements \renderable, \templatable {
 
+    protected $courseid;
+
     public function __construct($courseid) {
         $this->courseid = $courseid;
     }
+
     public function export_for_template(\renderer_base $renderer) {
         $data = new \stdClass();
 

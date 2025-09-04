@@ -33,17 +33,8 @@ function tool_syncgroups_extend_navigation_course($navigation, $course, context 
         return;
     }
 
-    if ($usersnode = $navigation->get('users')) {
-
-        $str = get_string('pluginname', 'tool_syncgroups');
-        $url = new moodle_url('/admin/tool/syncgroups/index.php', array('courseid' => $context->instanceid));
-        $node = navigation_node::create($str, $url, navigation_node::NODETYPE_LEAF, 'tool_syncgroups', 'tool_syncgroups');
-
-        if ($PAGE->url->compare($url, URL_MATCH_BASE)) {
-            $node->make_active();
-        }
-        $usersnode->add_node($node, 'override');
-    }
+    $url = new moodle_url('/admin/tool/syncgroups/index.php', array('courseid' => $context->instanceid));
+    $navigation->add(get_string('pluginname','tool_syncgroups'), $url, navigation_node::TYPE_SETTING, null, null, new pix_icon('i/report', ''));
 }
 
 function tool_syncgroups_do_sync($groups, $destinations, $trace) {

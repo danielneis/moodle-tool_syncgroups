@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2020090900;
-$plugin->release   = '6';
+$plugin->version   = 2025090400;
+$plugin->release   = '7';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->requires  = 2019111800;
+$plugin->requires  = 2025041400;
 $plugin->component = 'tool_syncgroups';

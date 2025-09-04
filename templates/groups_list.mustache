@@ -2,16 +2,16 @@
     <table class="generaltable">
         <thead>
             <tr>
-                <th class="col-1">{{{mastercheckbox}}}</th>
+                <th>{{{mastercheckbox}}}</th>
                 <th>{{{groupname}}}</th>
             </tr>
         </thead>
         <tbody>
         {{#groups}}
             <tr>
-                <td class="col-1"><input type="checkbox" class="groupscheckbox" data-togglegroup="groups"
+                <td class="col-2"><input type="checkbox" class="groupscheckbox" data-togglegroup="groups"
                   data-action="toggle" data-toggle="slave" name="groups[]" value="{{id}}" /> </td>
-                <td>{{name}}</td>
+                <td class="col-10">{{name}}</td>
             </tr>
         {{/groups}}
         </tbody>
