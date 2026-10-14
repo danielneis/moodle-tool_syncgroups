@@ -59,6 +59,7 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'tool_syncgroups'));
 
 if (!$searchcourses && !empty($groups) && !empty($destinations)) {
+    require_sesskey();
 
     $error = false;
     if ($origem = get_course($courseid)) {

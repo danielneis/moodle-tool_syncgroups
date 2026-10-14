@@ -81,6 +81,7 @@ class tool_syncgroups_renderer extends core_backup_renderer {
         foreach ($nextstageurl->params() as $key => $value) {
             $html .= html_writer::empty_tag('input', array('type' => 'hidden', 'name' => $key, 'value' => $value));
         }
+        $html .= html_writer::empty_tag('input', array('type' => 'hidden', 'name' => 'sesskey', 'value' => sesskey()));
 
         $html .= html_writer::start_tag('div', array('class' => 'ics-existing-group backup-section'));
         $html .= $this->output->heading(get_string('selectgroups', 'tool_syncgroups'), 2, array('class' => 'header'));
